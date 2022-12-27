@@ -12,6 +12,23 @@ def test_chance():
     assert 21 == Yatzy.chance(4, 5, 5, 6, 1)
     assert 6 == Yatzy.chance(1, 1, 1, 1, 2)
 
+def test_ones():
+    #Debe devolver la suma total de los 1
+    assert 2 == Yatzy.ones(1,2,3,4,1)
+    assert 4 == Yatzy.ones(1,1,1,1,5)
+
+def test_twos():
+    #Debe devolver la suma total de los 2
+    assert 4 == Yatzy.twos(2,2,4,5,1)
+    assert 6 == Yatzy.twos(2,2,2,1,4)
+
+def test_threes():
+    #Debe devolver la suma total de los 3
+    assert 3 == Yatzy.threes(3,1,2,5,2)
+    assert 9 == Yatzy.threes(3,2,3,1,3)
+
+
+
 
 @pytest.fixture
 def inyector():
