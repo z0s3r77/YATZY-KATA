@@ -34,17 +34,30 @@ def test_yatzy():
     assert 0 == Yatzy.yatzy([1,1,1,2,1])
     assert 0 == Yatzy.yatzy([2,4,1,5,3])
 
-
-@pytest.fixture
-def inyector():
-    # Es el setup de unittest o de JUnit
-    tirada = Yatzy(1, 2, 3, 4, 5)
-    return tirada
+def test_fours():
+    assert 4 == Yatzy.fours(2,4,1,5,5)
+    assert 12 == Yatzy.fours(4,4,4,2,1)
 
 
-def test_fours(inyector):
-    # Es necesario un objeto ya creado
-    valorEsperado = 4
-    # No puedo testear con fixtures = inyeccion de dependencias
-    # los metodos estaticos como chance()
-    assert valorEsperado == inyector.fours()
+def test_five():
+    assert 5 == Yatzy.fives(5,2,4,2,1)
+    assert 15 == Yatzy.fives(5,5,5,1,2)
+
+
+def test_sixes():
+    assert 12 == Yatzy.sixes(6,6,1,2,3)
+    assert 18 == Yatzy.sixes(5,1,6,6,6)
+
+# @pytest.fixture
+# def inyector():
+#     # Es el setup de unittest o de JUnit
+#     tirada = Yatzy(1, 2, 3, 4, 5)
+#     return tirada
+
+
+# def test_fours(inyector):
+#     # Es necesario un objeto ya creado
+#     valorEsperado = 4
+#     # No puedo testear con fixtures = inyeccion de dependencias
+#     # los metodos estaticos como chance()
+#     assert valorEsperado == inyector.fours()
