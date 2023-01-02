@@ -48,15 +48,6 @@ class Yatzy:
         return sum
     
 
-    # def __init__(self, d1, d2, d3, d4, _5):
-    #     self.dice = [0]*5
-    #     self.dice[0] = d1
-    #     self.dice[1] = d2
-    #     self.dice[2] = d3
-    #     self.dice[3] = d4
-    #     self.dice[4] = _5
-    
-
     #Devuelve la suma de todos los 4
     @staticmethod
     def fours(* dices):
@@ -75,7 +66,7 @@ class Yatzy:
                 sum += diceValue
         return sum
     
-
+   #Devuelve la suma de todos los 6
     @staticmethod
     def sixes(* dices):
         sum = 0
@@ -85,101 +76,100 @@ class Yatzy:
         return sum
     
 
-    
+
+    #Devuelve la suma del par mayor en los dados
     @staticmethod
-    def score_pair( d1,  d2,  d3,  d4,  d5):
-        counts = [0]*6
-        counts[d1-1] += 1
-        counts[d2-1] += 1
-        counts[d3-1] += 1
-        counts[d4-1] += 1
-        counts[d5-1] += 1
-        at = 0
-        for at in range(6):
-            if (counts[6-at-1] == 2):
-                return (6-at)*2
-        return 0
-    
+    def score_pair( * dices):
+
+        pairs = []
+
+        for i in dices:
+            if dices.count(i) > 1:
+                pairs.append(i)
+
+        if not pairs:
+            return 0
+
+        else:
+            pairs.sort()
+            die = pairs.pop() * 2
+            return die
+        
+
+
+
+    #Se suma el valor de dos parejas
     @staticmethod
-    def two_pair( d1,  d2,  d3,  d4,  d5):
-        counts = [0]*6
-        counts[d1-1] += 1
-        counts[d2-1] += 1
-        counts[d3-1] += 1
-        counts[d4-1] += 1
-        counts[d5-1] += 1
-        n = 0
-        score = 0
+    def two_pair( * dices):
+        
+        #Se cuenta cuantos dados hay de cada tipo
+        counts = [0] * 6
+        for die in dices:
+            counts[die - 1] += 1
+        
+
+        pairsOfNumbers = 0 
+        repeatingNumber = 0
+
+        #Se encuentran las parejas y el numero de la pareja 
+        #Es decir de 3,3 y sacamos el 3
         for i in range(6):
             if (counts[6-i-1] >= 2):
-                n = n+1
-                score += (6-i)
+                pairsOfNumbers = pairsOfNumbers+1
+                repeatingNumber += (6-i)
                     
-        if (n == 2):
-            return score * 2
+        
+        #Si el numero total de parejas es igual a dos
+        #Se multiplica por dos ese numero de parejas
+        
+        if (pairsOfNumbers == 2):
+            return repeatingNumber * 2
         else:
             return 0
-    
+
+
+
+    #Se devuelve la suma de tres dados repetidos
     @staticmethod
-    def four_of_a_kind( _1,  _2,  d3,  d4,  d5):
-        tallies = [0]*6
-        tallies[_1-1] += 1
-        tallies[_2-1] += 1
-        tallies[d3-1] += 1
-        tallies[d4-1] += 1
-        tallies[d5-1] += 1
-        for i in range(6):
-            if (tallies[i] >= 4):
-                return (i+1) * 4
+    def three_of_a_kind( * dices):
+
+        for die in dices:
+            if dices.count(die) >= 3: 
+                return die * 3
+        return 0
+        
+
+
+    #Se devuelve la suma de cuatro dados repetidos
+    @staticmethod
+    def four_of_a_kind( * dices ):
+        for die in dices:
+            if dices.count(die) >= 4: 
+                return die * 4
         return 0
     
 
-    @staticmethod
-    def three_of_a_kind( d1,  d2,  d3,  d4,  d5):
-        t = [0]*6
-        t[d1-1] += 1
-        t[d2-1] += 1
-        t[d3-1] += 1
-        t[d4-1] += 1
-        t[d5-1] += 1
-        for i in range(6):
-            if (t[i] >= 3):
-                return (i+1) * 3
-        return 0
     
 
+# El resultado de los dados debe serguir el orden 1,2,3,4,5
     @staticmethod
-    def smallStraight( d1,  d2,  d3,  d4,  d5):
-        tallies = [0]*6
-        tallies[d1-1] += 1
-        tallies[d2-1] += 1
-        tallies[d3-1] += 1
-        tallies[d4-1] += 1
-        tallies[d5-1] += 1
-        if (tallies[0] == 1 and
-            tallies[1] == 1 and
-            tallies[2] == 1 and
-            tallies[3] == 1 and
-            tallies[4] == 1):
-            return 15
-        return 0
-    
+    def smallStraight(*dices):
 
+        for i in range(5):
+            if dices[i] != i + 1:
+                return 0
+
+        return 15
+
+
+# El resultado de los dados debe serguir el orden 2,3,4,5,6
     @staticmethod
-    def largeStraight( d1,  d2,  d3,  d4,  d5):
-        tallies = [0]*6
-        tallies[d1-1] += 1
-        tallies[d2-1] += 1
-        tallies[d3-1] += 1
-        tallies[d4-1] += 1
-        tallies[d5-1] += 1
-        if (tallies[1] == 1 and
-            tallies[2] == 1 and
-            tallies[3] == 1 and
-            tallies[4] == 1
-            and tallies[5] == 1):
-            return 20
-        return 0
+    def largeStraight(*dices):
+        for i in range(5):
+            if dices[i] != i + 2:
+                return 0
+
+        return 20
     
 
     @staticmethod
@@ -216,5 +206,5 @@ class Yatzy:
             return 0
 
 
-tirada = Yatzy.yatzy([1,1,1,1,1])
+tirada = Yatzy.smallStraight(1,2,3,4,5)
 print(tirada)
