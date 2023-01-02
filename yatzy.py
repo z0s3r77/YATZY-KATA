@@ -2,19 +2,20 @@ class Yatzy:
 
     #Suma el total de todos los dados
     @staticmethod
-    def chance(* array):
-        return sum(array)
+    def chance(* dice):
+        return sum(dice)
 
 
     @staticmethod
     def yatzy(dice):
-        counts = [0]*(len(dice)+1)
+        
+        unique = dice[0]
+
         for die in dice:
-            counts[die-1] += 1
-        for i in range(len(counts)):
-            if counts[i] == 5:
-                return 50
-        return 0
+            if die != unique:
+                return 0
+        return 50
+    
     
     @staticmethod
     def ones(* dices):
@@ -202,3 +203,7 @@ class Yatzy:
             return _2_at * 2 + _3_at * 3
         else:
             return 0
+
+
+tirada = Yatzy.yatzy([1,1,1,1,1])
+print(tirada)

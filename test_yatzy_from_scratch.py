@@ -29,6 +29,11 @@ def test_threes():
 
 
 
+def test_yatzy():
+    assert 50 == Yatzy.yatzy([1,1,1,1,1])
+    assert 0 == Yatzy.yatzy([1,1,1,2,1])
+    assert 0 == Yatzy.yatzy([2,4,1,5,3])
+
 
 @pytest.fixture
 def inyector():
