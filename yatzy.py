@@ -172,39 +172,25 @@ class Yatzy:
         return 20
     
 
+
+    #Se devuelve la suma total de los dados si hay una pareja y un trio
     @staticmethod
-    def fullHouse( d1,  d2,  d3,  d4,  d5):
-        tallies = []
-        _2 = False
-        i = 0
-        _2_at = 0
-        _3 = False
-        _3_at = 0
+    def fullHouse(* dices):
+        pairs = []
+        threesomes = []
 
-        tallies = [0]*6
-        tallies[d1-1] += 1
-        tallies[d2-1] += 1
-        tallies[d3-1] += 1
-        tallies[d4-1] += 1
-        tallies[d5-1] += 1
+        for die in dices:
+            if dices.count(die) == 2:
+                pairs.append(die)
+            elif dices.count(die) == 3:
+                threesomes.append(die)
 
-        for i in range(6):
-            if (tallies[i] == 2): 
-                _2 = True
-                _2_at = i+1
+        if len(pairs) == 2 and len(threesomes)==3:
             
+            total = sum(dices)
+            return total
 
-        for i in range(6):
-            if (tallies[i] == 3): 
-                _3 = True
-                _3_at = i+1
-            
-
-        if (_2 and _3):
-            return _2_at * 2 + _3_at * 3
         else:
             return 0
 
 
-tirada = Yatzy.smallStraight(1,2,3,4,5)
-print(tirada)
