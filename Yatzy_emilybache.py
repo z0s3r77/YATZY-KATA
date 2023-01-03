@@ -228,3 +228,5 @@ class Yatzy:
             return _2_at * 2 + _3_at * 3
         else:
             return 0
+
+        
