@@ -23,57 +23,33 @@ class Yatzy:
     #Devuelve la suma de todos los 1
     @staticmethod
     def ones(* dices):
-        sum = 0
-        for diceValue in dices:
-            if diceValue == 1:
-                sum += diceValue
-        return sum
+        return dices.count(1)* 1
 
     #Devuelve la suma de todos los 2
     @staticmethod
     def twos(* dices):
-        sum = 0
-        for diceValue in dices:
-            if diceValue == 2:
-                sum += diceValue
-        return sum
+        return dices.count(2)*2
 
     #Devuelve la suma de todos los 3
     @staticmethod
     def threes(* dices):
-        sum = 0
-        for diceValue in dices:
-            if diceValue == 3:
-                sum += diceValue
-        return sum
+        return dices.count(3)*3
     
 
     #Devuelve la suma de todos los 4
     @staticmethod
     def fours(* dices):
-        sum = 0
-        for diceValue in dices:
-            if diceValue == 4:
-                sum += diceValue
-        return sum
+        return dices.count(4)*4
     
     #Devuelve la suma de todos los 5
     @staticmethod
     def fives(* dices):
-        sum = 0
-        for diceValue in dices:
-            if diceValue == 5:
-                sum += diceValue
-        return sum
+        return dices.count(5)*5
     
    #Devuelve la suma de todos los 6
     @staticmethod
     def sixes(* dices):
-        sum = 0
-        for diceValue in dices:
-            if diceValue == 6:
-                sum += diceValue
-        return sum
+        return dices.count(6)*6
     
 
 
