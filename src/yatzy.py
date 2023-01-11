@@ -1,3 +1,5 @@
+from src.pips import Pips
+
 class Yatzy:
     #Se ha optado por hacer todos los metodos estaticos
 
@@ -23,33 +25,46 @@ class Yatzy:
     #Devuelve la suma de todos los 1
     @staticmethod
     def ones(* dices):
-        return dices.count(1)* 1
+        ONE = Pips.ONE.value
+
+        return dices.count(ONE)* ONE
 
     #Devuelve la suma de todos los 2
     @staticmethod
     def twos(* dices):
-        return dices.count(2)*2
+
+        TWO = Pips.TWO.value
+
+        return dices.count(TWO)*TWO
 
     #Devuelve la suma de todos los 3
     @staticmethod
     def threes(* dices):
-        return dices.count(3)*3
+        THREE = Pips.THREE.value
+
+        return dices.count(THREE)*THREE
     
 
     #Devuelve la suma de todos los 4
     @staticmethod
     def fours(* dices):
-        return dices.count(4)*4
+        FOUR = Pips.FOUR.value
+
+        return dices.count(FOUR)*FOUR
     
     #Devuelve la suma de todos los 5
     @staticmethod
     def fives(* dices):
-        return dices.count(5)*5
+        FIVE = Pips.FIVE.value
+
+        return dices.count(FIVE)*FIVE
     
    #Devuelve la suma de todos los 6
     @staticmethod
     def sixes(* dices):
-        return dices.count(6)*6
+        SIX = Pips.SIX.value
+
+        return dices.count(SIX)*SIX
     
 
 
